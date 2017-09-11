@@ -1,0 +1,5 @@
+example_id                   | status  | run_time              |
+---------------------------- | ------- | --------------------- |
+./spec/tadb_spec.rb[1:1:1:1] | unknown |                       |
+./spec/tadb_spec.rb[1:1:1:2] | passed  | 35 minutes 53 seconds |
+./spec/tadb_spec.rb[1:1:2:1] | failed  | 0.02807 seconds       |
