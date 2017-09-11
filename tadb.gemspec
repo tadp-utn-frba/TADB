@@ -9,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ['UTN FRBA - TADP']
   spec.email         = ['erwincdl@gmail.com']
 
-  spec.summary       = 'A simple file DB adapter'
-  spec.description   = 'Toy DB adapter for academic purposes'
+  spec.summary       = 'File based storage'
+  spec.description   = 'Toy file based object storage for academic purposes'
   spec.homepage      = 'http://tadp-utn-frba.github.io/'
   spec.license       = 'MIT'
 
@@ -19,7 +19,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'rspec-collection_matchers'
+  spec.files = Dir['lib/**/*.rb']
+
+  spec.add_development_dependency 'rspec-collection_matchers', '~> 1.1'
   spec.add_development_dependency 'bundler', '~> 1.15'
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'rspec', '~> 3.0'
