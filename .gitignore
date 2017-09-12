@@ -1,2 +1,6 @@
 .idea
 bin
+*.gem
+Gemfile.lock
+.ruby-version
+.ruby-gemset
