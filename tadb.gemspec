@@ -17,9 +17,9 @@ Gem::Specification.new do |spec|
 
   spec.bindir        = 'exe'
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
-  spec.require_paths = ['lib']
+  spec.require_paths = Dir['lib']
 
-  spec.files = ['lib/tadb.rb']
+  spec.files         = Dir['lib/**/*.rb']
 
   spec.add_development_dependency 'rspec-collection_matchers', '~> 1.1'
   spec.add_development_dependency 'bundler', '~> 1.15'
