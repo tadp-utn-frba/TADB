@@ -37,6 +37,20 @@ class TADB::Table
     end
   end
 
+  def update(id, entry)
+    return unless self.present? id
+
+    _entry = entry
+    _entry[:id] = id
+
+    delete id
+    insert _entry
+  end
+
+  def present?(id)
+    entries.any? {|entry| entry[:id] === id}
+  end
+
   def clear
     File.open(db_path, 'w') {}
   end
