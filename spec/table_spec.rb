@@ -36,6 +36,50 @@ describe TADB::Table do
     end
   end
 
+  describe '#update' do
+
+    it 'update a value succesfully' do
+      table = TADB::Table.new('test')
+      an_id = 2222
+      table.insert({id: an_id, subject: 'tadp'})
+      expect(table.entries).to have_exactly(1).row
+      expect(table.entries.first).to include(subject: 'tadp')
+
+      table.update(an_id, {subject: 'iasc'} )
+      expect(table.entries).to have_exactly(1).row
+      expect(table.entries.first).to include(subject: 'iasc')
+    end
+
+    it 'do not update a non existent value' do
+      table = TADB::Table.new('test')
+      an_id = 2222
+      another_id = 2
+      table.insert({id: an_id, subject: 'tadp'})
+      expect(table.entries).to have_exactly(1).row
+
+      table.update(another_id, {subject: 'iasc'})
+      expect(table.entries.first).to include(subject: 'tadp')
+    end
+
+  end
+
+  describe '#present?' do
+    it 'not present in the database' do
+      table = TADB::Table.new('test')
+      table.insert({subject: 'tadp'})
+      expect(table.entries).to have_exactly(1).row
+
+      expect(table.present? 'an_id').to be_falsey
+    end
+
+    it 'present in the database' do
+      an_id = 223
+      table = TADB::Table.new('test')
+      table.insert({id: an_id, subject: 'tadp'})
+      expect(table.entries).to have_exactly(1).row
+      expect(table.entries.first).to be_truthy
+    end
+  end
 
   describe '#clear' do
 
