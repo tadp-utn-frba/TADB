@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = 'tadb'
   spec.version       = TADB::VERSION
   spec.authors       = ['UTN FRBA - TADP']
-  spec.email         = ['erwincdl@gmail.com']
+  spec.email         = ['erwincdl@gmail.com', 'ebossicarranza@frba.utn.edu.ar']
 
   spec.summary       = 'File based storage'
   spec.description   = 'Toy file based object storage for academic purposes'
