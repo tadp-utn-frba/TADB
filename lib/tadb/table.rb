@@ -10,7 +10,7 @@ class TADB::Table
   def entries
     file('r') do |f|
       f.readlines.map do |line|
-        JSON.parse(line).map {|k, v| [k.to_sym, v]}.to_h
+        JSON.parse(line, symbolize_names: true)
       end
     end
   end
@@ -38,7 +38,9 @@ class TADB::Table
   end
 
   def clear
-    File.open(db_path, 'w') {}
+    File.open(db_path, 'w') do |f|
+      f.sync = true
+    end
   end
 
   private
@@ -47,7 +49,12 @@ class TADB::Table
     Dir.mkdir('./db') unless File.exists?('./db')
     clear unless File.exists?(db_path)
 
-    File.open(db_path, mode) {|file| block.call(file)}
+    File.open(db_path, mode) do |file|
+      # The new File object is buffered mode (or non-sync mode), unless filename is a tty. See IO#flush, IO#fsync, IO#fdatasync, and IO#sync= about sync mode.
+      puts "Forcing sync on file #{db_path}..."
+      file.sync = true # https://ruby-doc.org/core-3.0.0/File.html#method-c-new-label-Examples
+      block.call(file)
+    end
   end
 
   def db_path
