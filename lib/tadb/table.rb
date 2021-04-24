@@ -3,8 +3,9 @@ require 'json'
 
 class TADB::Table
 
-  def initialize(name)
+  def initialize(name, clear_if_content = false)
     @name = name
+    clear_file_contents if clear_if_content
   end
 
   def entries
@@ -45,13 +46,21 @@ class TADB::Table
 
   private
 
+  def clear_file_contents
+    return unless file_present?
+    clear
+  end
+
+  def file_present?
+    File.file?(db_path)
+  end
+
   def file(mode, &block)
     Dir.mkdir('./db') unless File.exists?('./db')
     clear unless File.exists?(db_path)
 
     File.open(db_path, mode) do |file|
       # The new File object is buffered mode (or non-sync mode), unless filename is a tty. See IO#flush, IO#fsync, IO#fdatasync, and IO#sync= about sync mode.
-      puts "Forcing sync on file #{db_path}..."
       file.sync = true # https://ruby-doc.org/core-3.0.0/File.html#method-c-new-label-Examples
       block.call(file)
     end

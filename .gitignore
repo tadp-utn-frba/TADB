@@ -4,3 +4,4 @@ bin
 Gemfile.lock
 .ruby-version
 .ruby-gemset
+db/

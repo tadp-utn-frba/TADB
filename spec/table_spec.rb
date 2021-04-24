@@ -6,6 +6,26 @@ describe TADB::Table do
     TADB::DB.clear_all
   end
 
+  describe '#initialize with clear if present set to true' do
+    before do # we need to add some content in order to actually create the table
+      table.insert({subject: 'tadp'})
+    end
+
+    it 'should be one entry present' do
+      expect(table.entries).to have_exactly(1).row
+    end
+
+    it 'clear the file if we have another instance' do
+      new_table = TADB::Table.new(table_name, true)
+      expect(new_table.entries).to be_empty
+    end
+
+    it 'should clear the original table also' do
+      _new_table = TADB::Table.new(table_name, true)
+      expect(table.entries).to be_empty
+    end
+  end
+
   describe '#insert' do
     it 'adds one row' do
       table.insert({subject: 'tadp'})
@@ -33,6 +53,21 @@ describe TADB::Table do
         it { expect(table.entries).to have_exactly(2).cars }
       end
     end
+  end
+
+  describe '#file_present?' do
+    subject { table.send(:file_present?) }
+    let(:file_name) { table_name }
+
+    context 'when the file has been created' do
+      before do # we need to add a value to actually create and add some content to the file
+        table.insert({subject: 'tadp'})
+      end
+
+      it { expect(subject).to be_truthy }
+    end
+
+    it { expect(subject).to be_falsey }
   end
 
 

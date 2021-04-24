@@ -2,8 +2,8 @@ require 'fileutils'
 module TADB
   module DB
 
-    def self.table(table_name)
-      Table.new(table_name)
+    def self.table(table_name, clear_if_content = false)
+      Table.new(table_name, clear_if_content)
     end
 
     def self.clear_all
