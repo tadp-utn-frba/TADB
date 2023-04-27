@@ -15,7 +15,7 @@ N/A
 
 N/A
 
-## [0.3.8] - 2023-04-27 [Changes here](https://my.diffend.io/gems/tadb/0.3.8)
+## [0.3.8] - 2023-04-27 [Changes here](https://my.diffend.io/gems/tadb/0.3.7/0.3.8)
 
 ### Fixed
 
