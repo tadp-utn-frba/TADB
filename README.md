@@ -1,6 +1,6 @@
 # TADB
 
-Version: 0.3.7
+Version: 0.3.8
 
 > *Note*: This gem is intended only for academic purposes only, and not for general use. Also it's intended to be 
 > used on the Tecnicas Avanzadas de Programacion Subject only. The following instructions will be described in Spanish instead as intended.
