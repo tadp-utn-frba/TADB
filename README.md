@@ -1,5 +1,6 @@
 # TADB
 
+[![Gem Version](https://badge.fury.io/rb/tadb.svg)](https://badge.fury.io/rb/tadb)
 Version: 0.3.8
 
 > *Note*: This gem is intended only for academic purposes only, and not for general use. Also it's intended to be 
