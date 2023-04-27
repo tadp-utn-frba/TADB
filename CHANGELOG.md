@@ -15,6 +15,12 @@ N/A
 
 N/A
 
+## [0.3.8] - 2023-04-27 [Changes here](https://my.diffend.io/gems/tadb/0.3.8)
+
+### Fixed
+
+- Support for Ruby 3.x. Changed deprecated and unsupported functions.
+
 
 ## [0.3.7] - 2021-04-24 [Changes here](https://my.diffend.io/gems/tadb/0.3.6/0.3.7)
 
