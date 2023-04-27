@@ -56,8 +56,8 @@ class TADB::Table
   end
 
   def file(mode, &block)
-    Dir.mkdir('./db') unless File.exists?('./db')
-    clear unless File.exists?(db_path)
+    Dir.mkdir('./db') unless File.exist?('./db')
+    clear unless File.exist?(db_path)
 
     File.open(db_path, mode) do |file|
       # The new File object is buffered mode (or non-sync mode), unless filename is a tty. See IO#flush, IO#fsync, IO#fdatasync, and IO#sync= about sync mode.
